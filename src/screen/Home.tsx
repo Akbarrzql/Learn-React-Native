@@ -97,25 +97,37 @@ function Home({navigation}: {navigation: any}) {
               />
             </ButtonComponent>
             <ButtonComponent>
-              <Button title="Text" onPress={() => Alert.alert('Hello')} />
+              <Button
+                title="Text"
+                onPress={() => navigation.navigate('TextComponent')}
+              />
             </ButtonComponent>
           </View>
           <View style={styles.row}>
             <ButtonComponent>
-              <Button title="Image" onPress={() => Alert.alert('Hello')} />
+              <Button
+                title="Image"
+                onPress={() => navigation.navigate('ImageComponent')}
+              />
             </ButtonComponent>
             <ButtonComponent>
-              <Button title="Text Input" onPress={() => Alert.alert('Hello')} />
+              <Button
+                title="Text Input"
+                onPress={() => navigation.navigate('InputTextComponent')}
+              />
             </ButtonComponent>
           </View>
           <View style={styles.row}>
             <ButtonComponent>
-              <Button title="ScrollView" onPress={() => Alert.alert('Hello')} />
+              <Button
+                title="ScrollView"
+                onPress={() => navigation.navigate('ScrollViewComponent')}
+              />
             </ButtonComponent>
             <ButtonComponent>
               <Button
                 title="Style Sheet"
-                onPress={() => Alert.alert('Hello')}
+                onPress={() => navigation.navigate('StyleComponent')}
               />
             </ButtonComponent>
           </View>

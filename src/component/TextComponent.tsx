@@ -19,7 +19,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const ViewComponent = () => {
+const TextComponent = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -38,20 +38,36 @@ const ViewComponent = () => {
           },
         ]}>
         <Text style={styles.sectionTitle}>
-          Komponen paling mendasar untuk membangun UI, View adalah wadah yang
-          mendukung tata letak dengan flexbox , style , beberapa penanganan
-          sentuhan , dan kontrol aksesibilitas . Viewmemetakan langsung ke
-          tampilan asli yang setara pada platform apa pun yang menjalankan React
-          Native, apakah itu UIView, div, android.view, dll.
+          Text mendukung nesting, styling, dan penanganan sentuhan.
         </Text>
       </View>
       <Text>
-        <Text style={{fontWeight: 'bold'}}>Contoh View</Text>
+        <Text style={{fontWeight: 'bold'}}>Contoh Text</Text>
       </Text>
-      <BoxComponent />
+      <TextInANest />
     </View>
   );
 };
+
+function TextInANest() {
+  const [titleText, setTitleText] = useState("Bird's Nest");
+  const bodyText = 'This is not really a bird nest.';
+
+  const onPressTitle = () => {
+    setTitleText("Bird's Nest [pressed]");
+  };
+
+  return (
+    <Text style={styles.baseText}>
+      <Text style={styles.titleText} onPress={onPressTitle}>
+        {titleText}
+        {'\n'}
+        {'\n'}
+      </Text>
+      <Text numberOfLines={5}>{bodyText}</Text>
+    </Text>
+  );
+}
 
 const styles = StyleSheet.create({
   sectionContainerText: {
@@ -63,22 +79,14 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     padding: 10,
   },
+  baseText: {
+    marginTop: 10,
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });
 
-function BoxComponent() {
-  return (
-    <View
-      style={{
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        height: 100,
-        marginTop: 10,
-      }}>
-      <View style={{backgroundColor: 'powderblue', flex: 0.5}} />
-      <View style={{backgroundColor: 'skyblue', flex: 0.5}} />
-      <View style={{backgroundColor: 'steelblue', flex: 0.5}} />
-    </View>
-  );
-}
-
-export default ViewComponent;
+export default TextComponent;
